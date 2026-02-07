@@ -1,0 +1,16 @@
+<!-- TOP BAR -->
+<div class="topbar">
+<div class="logo" onclick="goHome()"><span>▶</span>YouTube</div>
+<div class="search"><input placeholder="Search"><button>🔍</button></div>
+<div class="profile"></div>
+</div>
+
+
+<div class="layout">
+<!-- SIDEBAR -->
+<div class="sidebar">
+<div class="menu">🏠 Home</div>
+<div class="menu">🎬 Shorts</div>
+<div class="menu">📺 Subscriptions</div>
+<div class="menu">📚 Library</div>
+</div>
