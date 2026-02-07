@@ -1,0 +1,16 @@
+
+
+/* WATCH PAGE */
+.watch{flex:1;padding:16px;display:none}
+video{width:100%;max-height:70vh;border-radius:14px;background:#000}
+.title{margin:12px 0;font-size:18px}
+.actions{display:flex;gap:12px;margin-bottom:16px}
+.btn{background:#272727;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:14px}
+.btn:hover{background:#3d3d3d}
+
+
+.back{margin-bottom:10px;cursor:pointer;color:#aaa}
+.back:hover{color:#fff}
+</style>
+</head>
+<body>
