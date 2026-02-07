@@ -1,0 +1,11 @@
+/* TOP BAR */
+.topbar{
+height:56px;display:flex;align-items:center;gap:16px;
+padding:0 16px;background:#0f0f0f;border-bottom:1px solid #222;position:sticky;top:0;z-index:10
+}
+.logo{font-size:20px;font-weight:700;cursor:pointer}
+.logo span{color:#ff0000;margin-right:4px}
+.search{flex:1;display:flex;justify-content:center}
+.search input{width:60%;padding:8px 14px;border-radius:20px 0 0 20px;border:1px solid #303030;background:#121212;color:#fff}
+.search button{padding:8px 16px;border-radius:0 20px 20px 0;border:1px solid #303030;background:#222;color:#fff;cursor:pointer}
+.profile{width:32px;height:32px;border-radius:50%;background:#ff0000}
