@@ -1,0 +1,16 @@
+<!-- HOME -->
+<div class="home" id="home"></div>
+
+
+<!-- WATCH PAGE -->
+<div class="watch" id="watch">
+<div class="back" onclick="goHome()">← Back to Home</div>
+<video id="player" controls autoplay poster="" ></video>
+<div class="title" id="videoTitle"></div>
+<div class="actions">
+<div class="btn">👍 Like</div>
+<div class="btn">🔗 Share</div>
+<div class="btn">🔔 Subscribe</div>
+</div>
+</div>
+</div>
