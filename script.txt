@@ -1,0 +1,64 @@
+<script>
+const videos=[
+{
+title:"Flower Video – Nature",
+src:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+thumb:"https://via.placeholder.com/500x300.png?text=Video+Thumbnail+1",
+channel:"Nature",
+views:"1M views"
+},
+{
+title:"River Flow HD",
+src:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/river.mp4",
+thumb:"https://via.placeholder.com/500x300.png?text=Video+Thumbnail+2",
+channel:"Water",
+views:"500K views"
+},
+{
+title:"Big Buck Bunny",
+src:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+thumb:"https://via.placeholder.com/500x300.png?text=Video+Thumbnail+3",
+channel:"Animation",
+views:"2M views"
+}
+];
+
+
+const home=document.getElementById('home');
+const watch=document.getElementById('watch');
+const player=document.getElementById('player');
+const videoTitle=document.getElementById('videoTitle');
+
+
+function goHome(){
+watch.style.display='none';
+home.style.display='grid';
+player.pause();
+}
+
+
+videos.forEach(v=>{
+const c=document.createElement('div');
+c.className='card';
+c.innerHTML=`
+<div class="thumb" style="background-image:url('${v.thumb}')"></div>
+<div class="info">
+<div class="ch"></div>
+<div class="txt">
+<h4>${v.title}</h4>
+<p>${v.channel} • ${v.views}</p>
+</div>
+</div>`;
+c.onclick=()=>{
+home.style.display='none';
+watch.style.display='block';
+player.src=v.src;
+player.poster=v.thumb;
+videoTitle.innerText=v.title;
+player.play();
+};
+home.appendChild(c);
+});
+</script>
+</body>
+</html>
