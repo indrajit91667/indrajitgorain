@@ -1,52 +1,378 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Auto Play Video Ad</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vino Live</title>
+
 <style>
+* { box-sizing: border-box; }
+
 body{
     margin:0;
-    padding:0;
-    background:#f2f2f2;
+    font-family:Arial;
+    background:#000066;  
+    display:flex;
+    justify-content:center;
+}
+
+/* SPLASH FULL SCREEN */
+#splash{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh; /* 👈 mobile full height */
+    background:black;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    font-family:Arial, sans-serif;
+    z-index:9999;
+    transition:opacity 0.5s ease;
 }
 
-.ad-box{
-    width:380px;
-    background:linear-gradient(135deg,#ff512f,#dd2476);
-    border-radius:0px;
-    color:white;
-    text-align:center;
-    padding:0px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-.ad-box h1{
-    font-size:0px;
-    margin-top:0px;
-}
-
-video{
+/* 9:16 RESPONSIVE BOX */
+.splash-box{
     width:100%;
-    border-radius:0px;
-    margin-top:0px;
+    height:100%;
+    max-width:100vh * 9 / 16; /* auto adjust */
+    aspect-ratio:9/16;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* IMAGE FIT */
+.splash-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* APP */
+.app{
+    width:100%;
+    max-width:900px;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    max-width:900px;
+    height:45px;
+    background:#000066;
+    display:flex;
+    align-items:center;
+    padding-left:10px;
+    border-bottom:0px solid #ddd;
+    z-index:1000;
+}
+
+header img{
+    height:100%;
+}
+
+/* MAIN */
+.main{
+    margin-top:45px;
+    padding-bottom:60px; /* bottom menu space */
+}
+
+/* TOP */
+#topBox{
+    position:sticky;
+    top:45px;
+    background:black;
+}
+
+/* MEDIA */
+.media-box{
+    width:100%;
+    aspect-ratio:16/9;
+    position:relative;
+    overflow:hidden;
+}
+
+/* SLIDER */
+.slider-track{
+    display:flex;
+    height:100%;
+    transition:transform 0.7s ease-in-out;
+}
+
+.slide{
+    min-width:100%;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* PLAYER */
+.media-box iframe{
+    width:100%;
+    height:100%;
+}
+
+/* CLOSE */
+.close-btn{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:blue;
+    color:red;
+    border:none;
+    z-index:10;
+}
+
+/* CARDS */
+.channels{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    padding:10px;
+}
+
+.card{
+    text-align:center;
+    cursor:pointer;
+        color:white;
+}
+
+.card img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:3px solid red;
+    padding:2px;
+}
+
+.card-title{
+    font-size:11px;
+}
+/* MOBILE */
+@media(max-width:700px){
+    .card img{
+        width:70px;
+        height:70px;
+    }
 }
 </style>
+
 </head>
+
 <body>
+    
+<!-- SPLASH -->
+<div id="splash">
+    <div class="splash-box">
+        <img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/a2bbe28989a136b20f26c8ab1368b9a751eda112/YouCut_20260430_163017452-ezgif.com-video-to-gif-converter.gif">
+    </div>
+</div>
 
-<div class="ad-box">
-    <h1>🎬 Watch Now</h1>
 
-    <video autoplay muted playsinline loop>
-        <source src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/af69b012a99c3b2c87f4a7890ff528760feaf9bf/Aaj_Amaye____Power___Jeet___Nusrat___Jeet_Gannguli___Anwesshaa___SVF(360p).mp4" type="video/mp4">
-    </video>
+<div class="app">
+ 
+<!-- HEADER --> 
+<header>
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/8bfe87606153dcf65b4c89b683b44f69f516e80a/YouCut_20260430_165618663-ezgif.com-video-to-gif-converter.gif">
+</header>
+
+<div class="main">
+
+<!-- TOP -->
+<div id="topBox">
+
+<div class="media-box" id="banner">
+
+<div class="slider-track" id="sliderTrack">
+
+<div class="slide">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/7fbd462370b39d9c7919882414dcceae75aaa4ea/Screenshot%202025-12-10%20110319.png">
+</div>
+
+<div class="slide">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/31bfe68bd6690ff08cc33975c8f035adff744d0c/image_search_1774087911005.webp">
+</div>
+
+<div class="slide">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/31bfe68bd6690ff08cc33975c8f035adff744d0c/image_search_1774087951076.jpg">
+</div>
 
 </div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="media-box" id="playerBox" style="display:none;">
+<button class="close-btn" onclick="closeVideo()">✖</button>
+<iframe id="player"></iframe>
+</div>
+
+</div>
+
+<!-- CARDS -->
+<div class="channels">
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/green-gold-tv-india/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/8bb24f4ffe68de159fc1f64a487e4091abfc7d7e/Screenshot%202026-04-15%20225005.png">
+<div class="card-title">Green gold tv</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/pasand/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/72a52426969b4293655e1548282a00566e1b0618/Screenshot%202026-04-10%20153704.png">
+<div class="card-title">Pasand</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/ndtv-india/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/943f05de4982addf170e7fcdedf65161e063b40d/Screenshot%202026-04-13%20191214.png">
+<div class="card-title">NDTV India</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/aajtak/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/bb3fc753c64171f47b42b08d3038726f8db4d04c/Screenshot%202026-04-14%20165405.png">
+<div class="card-title">Aaj tak</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/dd-india/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/2152b96ae0478d4d1a4f2bf2033b407d0df851eb/Screenshot%202026-04-14%20165749.png">
+<div class="card-title">DD INDIA</div>
+</div>
+<div class="card" onclick="playChannel('https://raw.githubusercontent.com/indrajit91667/indrajitgorain/487ae7d641484a35d05c7a288c2060c531bbc8ba/Screenshot%202026-04-14%20170121.png')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/487ae7d641484a35d05c7a288c2060c531bbc8ba/Screenshot%202026-04-14%20170121.png">
+<div class="card-title">ABP news</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/republic-bharat/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/164ce3afcedbc1f1deb37b839222a8c78b60e8cc/Screenshot%202026-04-14%20170449.png">
+<div class="card-title">Republic bharat</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/rupashi-bangla/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5099dbea5f5547417a5794adf09cf7925537a260/Screenshot%202026-04-14%20170818.png">
+<div class="card-title">Rupashi bangla</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/best-action-tv/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/78981ec816686a5041def451b7271f3560a5c835/Screenshot%202026-04-14%20171607.png">
+<div class="card-title">Zee action</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/colors-tv/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/14e44e99dabe550127a5639a330f638c097ffaf4/Screenshot%202026-04-15%20224713.png">
+<div class="card-title">Colors  tv</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/bollywood-4u/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5099dbea5f5547417a5794adf09cf7925537a260/Screenshot%202026-04-13%20212503.png">
+<div class="card-title">Goldmines bollywood</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/aastha-tv/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/78981ec816686a5041def451b7271f3560a5c835/Screenshot%202026-04-13%20185819.png">
+<div class="card-title">Aastha</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/aajtak/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/bb3fc753c64171f47b42b08d3038726f8db4d04c/Screenshot%202026-04-14%20165405.png">
+<div class="card-title">Aaj tak</div>
+</div>
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/9xm/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/ce1218b293af73bf1b9076edd05fd25c80f683ea/Screenshot%202026-04-14%20172827.png">
+<div class="card-title">9xm</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/good-news-today/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/91e7ae50f4ea501aca979ddf330fdda55afe53ef/Screenshot%202026-04-14%20173801.png">
+<div class="card-title">GNT news</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/aastha-bhajan/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/ce1218b293af73bf1b9076edd05fd25c80f683ea/Screenshot%202026-04-13%20210241.png">
+<div class="card-title">Aastha bhajan</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/pasand/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/72a52426969b4293655e1548282a00566e1b0618/Screenshot%202026-04-10%20153704.png">
+<div class="card-title">Pasand</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/star-sports-khel/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5116ff67aba07f10ade2690f5c114548d24cfe51/Screenshot%202026-04-15%20224904.png">
+<div class="card-title">Star sports khel</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/best-action-tv/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/78981ec816686a5041def451b7271f3560a5c835/Screenshot%202026-04-14%20171607.png">
+<div class="card-title">Zee action</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/bollywood-4u/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5099dbea5f5547417a5794adf09cf7925537a260/Screenshot%202026-04-13%20212503.png">
+<div class="card-title">Goldmines bollywood</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/good-news-today/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/91e7ae50f4ea501aca979ddf330fdda55afe53ef/Screenshot%202026-04-14%20173801.png">
+<div class="card-title">GNT news</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/zee-news/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/a46ef7fb2b227f952e42452f4626ac66cadc9184/Screenshot%202026-04-16%20095726.png">
+<div class="card-title">Zee news</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/zee-business/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/9e9eacf17767dc3ac41a526f4cb2a4ac00abcafb/Screenshot%202026-04-16%20100012.png">
+<div class="card-title">Zee business</div>
+</div><div class="card" onclick="playChannel('https://www.yupptv.com/channels/pasand/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/72a52426969b4293655e1548282a00566e1b0618/Screenshot%202026-04-10%20153704.png">
+<div class="card-title">Pasand</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/zee-tv/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/9e71ab54382221f9d5654c0e981d9924cd59a3eb/Screenshot%202026-04-15%20224805.png">
+<div class="card-title">Zee tv</div>
+</div><div class="card" onclick="playchannel('https://www.yupptv.com/channels/sony-pal/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/91aa2b5506dad5eadeae68535bfb647bc209390a/Screenshot%202026-04-15%20224835.png">
+<div class="card-title">sony pal</div>
+</div>
+
+<div class="card" onclick="playChannel('https://www.yupptv.com/channels/ndtv-india/live/embed')">
+<img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/943f05de4982addf170e7fcdedf65161e063b40d/Screenshot%202026-04-13%20191214.png">
+<div class="card-title">NDTV India</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* SLIDER */
+let index=0;
+
+setInterval(()=>{
+    const track=document.getElementById("sliderTrack"); 
+    const slides=document.querySelectorAll(".slide"); 
+
+    index++;
+    if(index>=slides.length) index=0;
+
+    track.style.transform=`translateX(-${index*100}%)`;
+},3000);
+
+/* PLAY */
+function playChannel(url){
+    document.getElementById("player").src=url;
+    document.getElementById("banner").style.display="none";
+    document.getElementById("playerBox").style.display="block";
+}
+
+/* CLOSE */
+function closeVideo(){
+    document.getElementById("playerBox").style.display="none";
+    document.getElementById("banner").style.display="block";
+    document.getElementById("player").src="";
+}
+
+/* SPLASH HIDE AFTER 5 SEC */
+window.onload = function(){
+    setTimeout(function(){
+        let splash = document.getElementById("splash");
+        splash.style.opacity = "0";
+
+        setTimeout(function(){
+            splash.style.display = "none";
+        }, 500);
+
+    }, 5000);
+};
+
+</script>
 
 </body>
 </html>
