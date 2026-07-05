@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Mobile App Style Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f0f0f; /* YouTube Dark Theme background */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* VIDEO PLAYER CONTAINER */
+        /* Shuruat me normal scroll hoga, click hote hi JavaScript isme 'sticky-active' class jod dega */
+        .player-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        /* JAB VIDEO PAR CLICK HO: Yeh class apply hogi aur video player top me fix ho jayega */
+        .player-section.sticky-active {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .main-video-container {
+            width: 100%;
+            max-width: 600px; /* Mobile layout optimization */
+            aspect-ratio: 16/9;
+            background-color: #000;
+        }
+
+        .main-video-container video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* PLAYLIST/RECOMMENDATIONS AREA (Yeh scroll hota rahega) */
+        .playlist-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .video-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Vertical scroll spacing like standard mobile feeds */
+        }
+
+        .playlist-item {
+            background-color: #0f0f0f;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .thumbnail-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #272727;
+            position: relative;
+        }
+
+        .playlist-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Play overlay layout */
+        .thumbnail-wrapper::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px 18px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .playlist-item:hover .thumbnail-wrapper::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="player-section" id="appPlayerWrapper">
+    <div class="main-video-container">
+        <video id="mainPlayer" controls autoplay muted>
+            <source src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/%E0%A6%AC%E0%A7%8B%E0%A6%AE.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<div class="playlist-container">
+    <div class="video-grid">
+        
+        <div class="playlist-item" onclick="handleVideoPlay('https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/%E0%A6%AC%E0%A7%8B%E0%A6%AE.mp4')">
+            <div class="thumbnail-wrapper">
+                <img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/Screenshot%202025-12-10%20110319.png" alt="Thumbnail">
+            </div>
+        </div>
+
+        <div class="playlist-item" onclick="handleVideoPlay('https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/%E0%A6%AC%E0%A7%8B%E0%A6%AE.mp4')">
+            <div class="thumbnail-wrapper">
+                <img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/Screenshot%202025-12-10%20110319.png" alt="Thumbnail">
+            </div>
+        </div>
+
+        <div class="playlist-item" onclick="handleVideoPlay('https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/%E0%A6%AC%E0%A7%8B%E0%A6%AE.mp4')">
+            <div class="thumbnail-wrapper">
+                <img src="https://raw.githubusercontent.com/indrajit91667/indrajitgorain/5c63f6729932f53a0d569014dc84bc21244d3d05/Screenshot%202025-12-10%20110319.png" alt="Thumbnail">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function handleVideoPlay(videoUrl) {
+        const mainPlayer = document.getElementById('mainPlayer');
+        const wrapper = document.getElementById('appPlayerWrapper');
+        
+        // 1. Source badal kar video start karein
+        mainPlayer.src = videoUrl;
+        mainPlayer.play();
+        
+        // 2. STICKY DYNAMIC CLASSIFICATION: Isse player ab hamesha top par chipak jayega
+        wrapper.classList.add('sticky-active');
+        
+        // 3. Smoothly target the header top focus
+        wrapper.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    }
+</script>
+
+</body>
+</html>
